@@ -1,0 +1,11 @@
+<h2>Add a Food Item</h2>
+
+<form action="/foods" method="POST">
+	Name: <input type="text" name="food[name]"><br>
+	Cuisine Type: <input type="text" name="food[cuisine_type]"><br>
+	Price: $<input type="text" name="food[price]"><br>
+	Vegetarian?
+	<input checked="checked" name="food[vegetarian]" type="radio" value="true">True <input name="food[vegetarian]" type="radio" value="false">False
+
+	<input type="submit" value="Add Food Item"><br>
+</form>

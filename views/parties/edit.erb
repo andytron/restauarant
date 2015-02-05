@@ -1,0 +1,26 @@
+<h2>Edit <%= @party.name %></h2>
+
+<form action="/parties/<%= @party.id %>" method="POST">
+	Name: <input type="text" name="party[name]" value="<%= @party.name %>"><br>
+	Table Number: <input type="text" name="party[table_id]" value="<%= @party.table_id %>"><br>
+	Number of Guests: <input type="text" name="party[number_guests]" value="<%= @party.number_guests %>"><br>
+	Meal Paid?
+	<input checked="checked" name="party[meal_paid]" type="radio" value="true">True <input name="party[meal_paid]" type="radio" value="false">False
+	Food Items: <select name="party[table_id]">
+    <% @foods.each do |food| %>
+      <% if @party.table_id == table_id %>
+        <option value="<%= food.id %>" selected="selected"><%= food.name %></option>
+      <% else %>
+        <option value="<%= food.id %>"><%= food.name %></option>  
+      <% end %>
+    <% end %>
+  	</select>
+
+	<input type="hidden" name="_method" method="PATCH">
+	<input type="submit" value="Submit Edit"><br>
+</form>
+
+<form action="/parties/<%= @party.id %>" method="POST">
+	<input type="hidden" name="_method" value="DELETE">
+	<input type="submit" value="Delete Party">
+</form>

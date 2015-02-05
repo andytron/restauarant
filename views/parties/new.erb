@@ -1,0 +1,11 @@
+<h2>Add a New Party</h2>
+
+<form action="/parties" method="POST">
+	Name: <input type="text" name="party[name]"><br>
+	Table Number: <input type="text" name="party[table_id]"><br>
+	Number of Guests: <input type="text" name="party[number_guests]"><br>
+	Meal Paid?
+	<input checked="checked" name="party[meal_paid]" type="radio" value="true">True <input name="party[meal_paid]" type="radio" value="false">False
+
+	<input type="submit" value="Add Party"><br>
+</form>
