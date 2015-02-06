@@ -6,14 +6,22 @@
 	<li>Meal Paid? <%= @party.meal_paid %></li>
 </ul>
 
-<h3>Current Meal</h3>
-<ul>
-	<% @party.foods.each do |food| %>
-		<li><a href="/foods/<%= food.id %>"><%= food.name %></a></li>
-	<% end %>
-</ul>
+<h3>Order Details</h3>
+<form action="/meals" method="POST">
+<% @party.number_guests.times.each do |guest| %>
+	<select name="meal[food_id]">
+		<% @foods.each do |food| %>
+			<option name="meal[food_id]" value="<%= food.id %>"><%= food.name %></option>
+		<% end %>
+	</select>
+	<br>
+<% end %>
 
-<h3>Options</h3>
+	<input type="submit" value="Add Order"><br>	
+</form>
+
+
+<h3>Party Options</h3>
 <ul>
 	<a href="/parties/<%= @party.id %>/edit">Edit Party</a>
 
@@ -22,3 +30,4 @@
 		<input type="submit" value="Delete Party">
 	</form>
 </ul>
+

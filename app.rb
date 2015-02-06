@@ -10,11 +10,12 @@ require_relative 'classes/meal'
 
 enable :method_override
 
+# default route
 get '/' do
   erb :index
 end
 
-# default route
+
 # get "/*" do
 #   redirect to("parties/index")
 # end
@@ -37,7 +38,7 @@ end
 post '/foods' do
   food = Food.create(params[:food])
 
-  redirect to "foods/#{food.id}"
+  redirect to "/foods/#{food.id}"
 end
 
 # edit: Return a form for editing a food item
@@ -88,7 +89,7 @@ end
 post '/parties' do
   party = Party.create(params[:party])
 
-  redirect to "parties/#{party.id}"
+  redirect to "/parties/#{party.id}"
 end
 
 # edit: Return a form for editing a new party
@@ -111,6 +112,8 @@ end
 get '/parties/:id' do
   party_id = params['id']
   @party = Party.find(party_id)
+  @foods = Food.all
+
   erb :'parties/show'
 end
 
@@ -125,20 +128,15 @@ end
 post '/meals' do
   meal = Meal.create(params[:meal])
 
-  redirect to "parties/#{party.id}"
+  redirect to "/parties/receipt/"
 end
 
 # save party's receipt, display contents of receipt, and offer receipt for download
+get 'parties/:id/receipt' do
+  @meal = Meal.find(params['id'].to_i)
 
-# get 'parties/:id/receipt' do
-#   do something
-# end
-
-# mark a party as paid
-
-# patch /parties/:id/checkout do
-#   do something
-# end
+  erb :'parties/receipt'
+end
 
 # run Pry
 get '/console' do
