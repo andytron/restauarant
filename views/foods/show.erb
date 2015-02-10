@@ -2,12 +2,13 @@
 <h3>Food Item Details</h3>
 <ul>
 	<li>Name: <%= @food.name %></li>
+	<li>Category: <%= @food.category %></li>
 	<li>Cuisine Type: <%= @food.cuisine_type %></li>
 	<li>Price: $<%= @food.price %></li>
 	<li>Vegetarian? <%= @food.vegetarian %></li>
 </ul>
 
-<h3>Party Ordering the Item</h3>
+<h3>Parties Ordering the Item</h3>
 <ul>
 	<% @food.parties.each do |party| %>
 		<li><a href="/parties/<%= party.id %>"><%= party.name %></a></li>

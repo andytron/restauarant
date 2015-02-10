@@ -1,0 +1,11 @@
+<h2>Order Details for</h2>
+<h3><%= @party.name %></h3>
+<ul>
+	<li>Table Number: <%= @party.table_id %></li>
+	<li>Number of Guests: <%= @party.number_guests %></li>
+	<li>Meal Paid? <%= @party.meal_paid %></li>
+	
+		<%= @party.meals.map do |meal| %>
+			<li><%= meal.food.price %></li>
+		<% end %>
+</ul>

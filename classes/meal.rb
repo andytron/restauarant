@@ -8,11 +8,13 @@ end
 # CREATE TABLE meals (
 # id SERIAL PRIMARY KEY,
 # party_id INT NOT NULL,
-# food_id INT NOT NULL
+# food_id INT NOT NULL,
+# created_at timestamp NOT NULL,
+# updated_at timestamp NOT NULL
 # );
 
 # INSERT INTO
-#   meals (party_id, food_id)
+#   meals (party_id, food_id, created_at, updated_at)
 # VALUES
 #   (1, 1),
 #   (1, 3),

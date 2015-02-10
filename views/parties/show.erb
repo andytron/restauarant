@@ -6,21 +6,6 @@
 	<li>Meal Paid? <%= @party.meal_paid %></li>
 </ul>
 
-<h3>Order Details</h3>
-<form action="/meals" method="POST">
-<% @party.number_guests.times.each do |guest| %>
-	<select name="meal[food_id]">
-		<% @foods.each do |food| %>
-			<option name="meal[food_id]" value="<%= food.id %>"><%= food.name %></option>
-		<% end %>
-	</select>
-	<br>
-<% end %>
-
-	<input type="submit" value="Add Order"><br>	
-</form>
-
-
 <h3>Party Options</h3>
 <ul>
 	<a href="/parties/<%= @party.id %>/edit">Edit Party</a>
@@ -31,3 +16,52 @@
 	</form>
 </ul>
 
+<section class="create-order">
+<h3>Start an Order</h3>
+	<ul>
+		<% @foods.each do |food| %>
+			<form action="/parties/<%= @party.id %>/meals" method="POST">
+				<input type="hidden" name="meal[food_id]" value="<%= food.id %>"><a href="/foods/<%= food.id %>"><%= food.name %> - $<%= food.price %></a>
+				<input type="hidden" name="meal[party_id]" value="<%= @party.id %>">
+				<input type="submit" value="Add Item">
+			</form>
+		<% end %>
+	</ul>
+</section>
+
+<aside class="order-details">
+<h3>Order Details</h3>
+	<ul>
+		<form action="/parties/<%= @party.id %>/receipt" method="GET">
+			<% @party.meals.each do |meal| %>
+				<li>
+					<form action="/meals/<%= meal.id %>" method="POST">
+						<%= meal.food.name %> - $<%= meal.food.price %>
+						<input type="hidden" name="_method" value="DELETE">
+						<input type="submit" value="Delete Item">
+					</form>
+				</li>
+				<input type="hidden" name="meal[food_id]" value="<%= meal.food.id %>">
+				<input type="hidden" name="meal[party_id]" value="<%= meal.party.id %>">
+
+			<% end %>
+
+			<h4>Subtotal: $<%= @party_order.sum(:price) %><br>
+			Tax: $<%= "%.2f" % (@party_order.sum(:price) * 0.0875) %><br>
+			Total: $<%= "%.2f" % (@party_order.sum(:price) * 1.0875) %><br>
+			</h4>
+
+			<p>Suggested Tip:<br>
+				15% = $<%= "%.2f" % (@party_order.sum(:price) * 0.15) %><br>
+				18% = $<%= "%.2f" % (@party_order.sum(:price) * 0.18) %><br>
+				20% = $<%= "%.2f" % (@party_order.sum(:price) * 0.20) %><br>
+			</p>
+
+			<input type="hidden" name="_method" value="POST">
+			<input type="submit" value="Generate Receipt">
+		</form>
+
+		<a href="/parties/<%= @party.id %>/receipt">Generate Receipt</a>
+
+	</ul>
+</aside>

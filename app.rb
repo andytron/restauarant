@@ -15,12 +15,7 @@ get '/' do
   erb :index
 end
 
-
-# get "/*" do
-#   redirect to("parties/index")
-# end
-
-## FOOD
+# -------- FOOD -------- #
 
 # index: Display all the food items
 get '/foods' do
@@ -71,7 +66,7 @@ delete '/foods/:id' do
   redirect to "/foods"
 end
 
-## PARTY
+# -------- PARTY -------- #
 
 # index: Display all the parties
 get '/parties' do
@@ -95,7 +90,7 @@ end
 # edit: Return a form for editing a new party
 get '/parties/:id/edit' do
   @party = Party.find(params['id'])
-  @foods = Food.all
+  # @foods = Food.all
 
   erb :'parties/edit'
 end
@@ -113,6 +108,7 @@ get '/parties/:id' do
   party_id = params['id']
   @party = Party.find(party_id)
   @foods = Food.all
+  @party_order = @party.foods
 
   erb :'parties/show'
 end
@@ -124,19 +120,61 @@ delete '/parties/:id' do
   redirect to "/parties"
 end
 
-# create: Create a new order
-post '/meals' do
-  meal = Meal.create(params[:meal])
+# -------- MEAL -------- #
 
-  redirect to "/parties/receipt/"
+# get '/meals/:id/meal' do |id|
+#   @party = Party.find(id)
+#   @meals = @party.foods
+#   # @meals = Meal.find(params['id'])
+#   @foods = Food.all
+
+#   erb :'party/meal'
+# end
+
+post '/parties/:id/meals' do
+  meal = Meal.create(params[:meal])
+  party = Party.find(params[:id])
+
+  redirect to "/parties/#{party.id}"
 end
+
+patch '/parties/:id/meals' do
+  meal = Meal.find(params[:id])
+  meal.update(params[:meal])
+
+  redirect to "/parties/#{party.id}"
+end
+
+delete '/meals/:id' do
+  @meal = Meal.find(params[:id])
+  @meal.destroy
+
+  redirect to "/parties/#{@meal.party_id}"
+end
+
+# delete '/meals/:id/meals' do
+#   meal = Meal.find(params[:id])
+#   meal.destroy
+
+#   redirect to "/parties/"
+# end
+
+# -------- CHECKOUT -------- #
 
 # save party's receipt, display contents of receipt, and offer receipt for download
 get 'parties/:id/receipt' do
-  @meal = Meal.find(params['id'].to_i)
+  @meal = Meal.find(params['id'])
 
   erb :'parties/receipt'
+  # redirect to "/parties/#{@meal.party_id}/receipt"
 end
+
+# checkout the party, mark them as paid
+# get 'parties/:id/checkout' do
+#   @meal = Meal.find(params['id'].to_i)
+
+#   erb :'parties/checkout'
+# end
 
 # run Pry
 get '/console' do
