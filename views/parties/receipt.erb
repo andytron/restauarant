@@ -1,3 +1,26 @@
-<h2><%= @meal.party.name %></h2>
-<h3>Meal's Receipt</h3>
+<h2>Order Receipt</h2>
+<h3></h3>
+	<ul>
+		<li>Party Name: <%= @party.name %></li>
+		<li>Table Number: <%= @party.table_id %></li>
+		<li>Meal Paid? <%= @party.meal_paid %></li>
+		<br>
 
+		<% @party.meals.each do |meal| %>
+			<li><%= meal.food.name %> - £<%= meal.food.price %></li>
+		<% end %>
+
+		<h4>Subtotal: £<%= @party_order.sum(:price) %><br>
+			VAT Tax: £<%= "%.2f" % (@party_order.sum(:price) * 0.175) %><br>
+			Total: £<%= "%.2f" % (@party_order.sum(:price) * 1.175) %><br>
+			</h4>
+
+		<p>Suggested Tip:<br>
+				15% = £<%= "%.2f" % (@party_order.sum(:price) * 0.15) %><br>
+				18% = £<%= "%.2f" % (@party_order.sum(:price) * 0.18) %><br>
+				20% = £<%= "%.2f" % (@party_order.sum(:price) * 0.20) %><br>
+
+		</p>
+		<h4>Thanks for joining us at Willy Cafe!</h4>
+		<a class="add" href="/parties">Return to Parties</a>
+	</ul>

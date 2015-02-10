@@ -1,8 +1,15 @@
-ActiveRecord::Base.establish_connection(
-  adapter: "postgresql",
-  database: "restaurants",
-  host: "localhost"
-)
+if ENV['APP_ENV'] == 'production'
+  ActiveRecord::Base.establish_connection(
+    adapter: "postgresql",
+    database: "restaurants"
+  )
+else
+  ActiveRecord::Base.establish_connection(
+    adapter: "postgresql",
+    database: "restaurants",
+    host: "localhost"
+  )
+end
 
 require_relative 'classes/party'
 require_relative 'classes/food'
@@ -162,8 +169,14 @@ end
 # -------- CHECKOUT -------- #
 
 # save party's receipt, display contents of receipt, and offer receipt for download
-get 'parties/:id/receipt' do
+get '/parties/:id/receipt' do
   @meal = Meal.find(params['id'])
+
+  party_id = params['id']
+  @party = Party.find(party_id)
+  @party.update(meal_paid: true)
+  @foods = Food.all
+  @party_order = @party.foods
 
   erb :'parties/receipt'
   # redirect to "/parties/#{@meal.party_id}/receipt"

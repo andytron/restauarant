@@ -4,7 +4,7 @@
 	<li>Name: <%= @food.name %></li>
 	<li>Category: <%= @food.category %></li>
 	<li>Cuisine Type: <%= @food.cuisine_type %></li>
-	<li>Price: $<%= @food.price %></li>
+	<li>Price: £<%= @food.price %></li>
 	<li>Vegetarian? <%= @food.vegetarian %></li>
 </ul>
 
@@ -17,7 +17,7 @@
 
 <h3>Food Item Options</h3>
 <ul>
-	<a href="/foods/<%= @food.id %>/edit">Edit Food Item</a>
+	<a class="add" href="/foods/<%= @food.id %>/edit">Edit Food Item</a>
 
 	<form action="/foods/<%= @food.id %>" method="POST">
 		<input type="hidden" name="_method" value="DELETE">
