@@ -3,7 +3,7 @@
 <ul>
 
 <% @foods.group_by{|food|food.category}.each do |category, foods| %>
-<h3><%= category %></h3>
+<h3><%= category.upcase %></h3>
 	<% @foods.each do |food|  %>
 		<li><a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a></li>
 	<% end %>

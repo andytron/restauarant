@@ -9,10 +9,10 @@
 	<input checked="checked" name="food[vegetarian]" type="radio" value="true">True <input name="food[vegetarian]" type="radio" value="false">False
 
 	<input type="hidden" name="_method" method="PATCH">
-	<input type="submit" value="Submit Edit"><br>
+	<input class="button" type="submit" value="Submit Edit"><br>
 </form>
 
 <form action="/foods/<%= @food.id %>" method="POST">
 	<input type="hidden" name="_method" value="DELETE">
-	<input type="submit" value="Delete Food Item">
+	<input class="button" type="submit" value="Delete Food Item">
 </form>

@@ -8,10 +8,10 @@
 	<input name="party[meal_paid]" type="radio" value="true">True <input checked="checked" name="party[meal_paid]" type="radio" value="false">False
 
 	<input type="hidden" name="_method" method="PATCH">
-	<input type="submit" value="Submit Edit"><br>
+	<input class="button" type="submit" value="Submit Edit"><br>
 </form>
 
 <form action="/parties/<%= @party.id %>" method="POST">
 	<input type="hidden" name="_method" value="DELETE">
-	<input type="submit" value="Delete Party">
+	<input class="button" type="submit" value="Delete Party">
 </form>

@@ -17,10 +17,9 @@
 
 <h3>Food Item Options</h3>
 <ul>
-	<a class="add" href="/foods/<%= @food.id %>/edit">Edit Food Item</a>
-
+	<a class="add" href="/foods/<%= @food.id %>/edit">Edit Food Item</a> or
 	<form action="/foods/<%= @food.id %>" method="POST">
 		<input type="hidden" name="_method" value="DELETE">
-		<input type="submit" value="Delete Food Item">
+		<input class="button" type="submit" value="Delete Food Item">
 	</form>
 </ul>

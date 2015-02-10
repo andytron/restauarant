@@ -10,8 +10,7 @@
 
 <h3>Party Options</h3>
 <ul>
-	<a class="add" href="/parties/<%= @party.id %>/edit">Edit Party</a>
-
+	<a class="add" href="/parties/<%= @party.id %>/edit">Edit Party</a> or
 	<form action="/parties/<%= @party.id %>" method="POST">
 		<input type="hidden" name="_method" value="DELETE">
 		<input class="button" type="submit" value="Delete Party">
@@ -24,7 +23,7 @@
 			<form action="/parties/<%= @party.id %>/meals" method="POST">
 				<input type="hidden" name="meal[food_id]" value="<%= food.id %>"><a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
 				<input type="hidden" name="meal[party_id]" value="<%= @party.id %>">
-				<input type="submit" value="Add Item">
+				<input class="button" type="submit" value="Add Item">
 			</form>
 		<% end %>
 	</ul>
@@ -38,7 +37,7 @@
 					<form action="/meals/<%= meal.id %>" method="POST">
 						<%= meal.food.name %> - £<%= meal.food.price %>
 						<input type="hidden" name="_method" value="DELETE">
-						<input type="submit" value="Delete Item">
+						<input class="button" type="submit" value="Delete Item">
 					</form>
 				</li>
 				<input type="hidden" name="meal[food_id]" value="<%= meal.food.id %>">
@@ -59,7 +58,7 @@
 			</p>
 
 			<input type="hidden" name="_method" value="POST">
-			<input type="submit" value="Generate Receipt">
+			<input class="button" type="submit" value="Generate Receipt">
 		</form>
 	</ul>
 </section>

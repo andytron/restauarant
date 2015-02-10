@@ -16,6 +16,8 @@
 
 @import url(http://fonts.googleapis.com/css?family=Francois+One);
 
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
 a {
 	text-decoration: none;
 	color: red;
@@ -39,7 +41,7 @@ a.add {
   	
   	letter-spacing: .5px;
 
- 	padding: 4px 4px;
+ 	padding: 0 4px 0 4px;
 }
 
 a.add:hover {
@@ -48,7 +50,7 @@ a.add:hover {
 }
 
 .button {
-  	color: #fff;
+  	color: goldenrod;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14px;
 	text-transform: uppercase;
@@ -57,14 +59,16 @@ a.add:hover {
 	display: inline-block;
 
 	letter-spacing: .5px;
-	padding: 5px 5px;
+	padding: 0 4px 0 4px;
 
  	border: 0;
- 	background: #648880;
+ 	background: white;
 }
 
 .button:hover {
-  background: #77a198;
+  background: none;
+  color: white;
+  border: 1px solid #fff;
 }
 
 ul {
@@ -72,7 +76,7 @@ ul {
 }
 
 body {
-	width: 700px;
+	width: 650px;
 	margin: 10 auto;
 
 	font-family: 'Source Sans Pro', sans-serif;
@@ -94,10 +98,10 @@ header {
 	background: url("http://previews.123rf.com/images/andreahast/andreahast1305/andreahast130500023/19479645-gold-foil-seamless-background-texture-leaf.jpg");
 	background-size: cover;
 	background-position: center;
-	font-family: 'Fjalla One', sans-serif;
+	font-family: 'Oswald', sans-serif;
 	font-size: 18px;
 	margin-top: 1em;
-	padding: 5px;
+	padding-top: 5px;
 }
 
 header li {
@@ -107,12 +111,12 @@ header li {
 
 img {
 	display: block;
-	width: 700px;
+	width: 650px;
 }
 
 h1 {
-	font-size: 40px;	
-	font-family: 'Francois One', sans-serif;
+	font-size: 50px;	
+	font-family: 'Montserrat', sans-serif;
 }
 
 h2 {
@@ -121,14 +125,21 @@ h2 {
 	font-family: 'Oswald', sans-serif;
 }
 
+h3 {
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+}
+
 .order-block-left {
 	display: inline-block;
 	float: left;
+	width: 50%;
 }
 
 .order-block-right {
 	display: inline-block;
 	float: right;
+	width: 50%;
 }
 
 .clearfix:after {
@@ -147,4 +158,9 @@ nav {
 	/*margin: 40px;*/
 	border: 40px;
 	/*padding: 40px;*/
+}
+
+footer {
+	clear: both;
+	padding: 10px;
 }

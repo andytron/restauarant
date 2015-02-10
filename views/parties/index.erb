@@ -1,6 +1,7 @@
 <h2>List of Parties</h2>
 
 <ul>
+	<h3>Name</h3>
 	<% @parties.each do |party| %>
 		<li><a href="/parties/<%= party.id %>"><%= party.name %></a></li>
 	<% end %>
