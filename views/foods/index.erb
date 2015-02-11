@@ -1,13 +1,68 @@
 <h2>List of Food Items</h2>
 
+<h3>Entrees</h3>
 <ul>
+	<% @foods.where("category='Entrees'").each do |food| %>
+    <li>
+    	<a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
+    </li>
+    <% end %>
+</ul>
 
-<% @foods.group_by{|food|food.category}.each do |category, foods| %>
-<h3><%= category.upcase %></h3>
-	<% @foods.each do |food|  %>
-		<li><a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a></li>
-	<% end %>
-<% end %>
+<h3>Sandwiches</h3>
+<ul>
+	<% @foods.where("category='Sandwiches'").each do |food| %>
+    <li>
+    	<a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
+    </li>
+    <% end %>
+</ul>
+
+<h3>Salads</h3>
+<ul>
+	<% @foods.where("category='Salads'").each do |food| %>
+    <li>
+    	<a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
+    </li>
+    <% end %>
+</ul>
+
+<h3>Tacos</h3>
+<ul>
+	<% @foods.where("category='Tacos'").each do |food| %>
+    <li>
+    	<a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
+    </li>
+    <% end %>
+</ul>
+
+<h3>Burgers</h3>
+<ul>
+	<% @foods.where("category='Burgers'").each do |food| %>
+    <li>
+    	<a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
+    </li>
+    <% end %>
+</ul>
+
+<h3>Wraps</h3>
+<ul>
+	<% @foods.where("category='Wraps'").each do |food| %>
+    <li>
+    	<a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
+    </li>
+    <% end %>
+</ul>
+
+<h3>Breakfast</h3>
+<ul>
+	<% @foods.where("category='Breakfast'").each do |food| %>
+    <li>
+    	<a href="/foods/<%= food.id %>"><%= food.name %> - £<%= food.price %></a>
+    </li>
+    <% end %>
+</ul>
+
 	<br>
 	<a class="add" href="/foods/new">Add a New Food Item</a>
 </ul>
