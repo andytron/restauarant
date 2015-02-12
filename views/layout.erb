@@ -1,12 +1,20 @@
 <html>
 <head>
-	<title>Welcome to Willy Cafe</title>
-	<link rel="stylesheet" href="/css/style.css">
+	<title><%= page_title %></title>
+	<link rel="stylesheet" href="/application.css">
 </head>
 <body>
 	<header>
 		<h1>WILLY CAFE</h1>
-		<%= erb :"/static/navigation" %>
+		<nav>
+			<ul>
+				<li><a href="/">HOME</a></li>
+				<li><a href="/parties">VIEW PARTIES</a></li>
+				<li><a href="/parties/new">ADD PARTY</a></li>
+				<li><a href="/foods">VIEW FOOD ITEMS</a></li>
+				<li><a href="/foods/new">ADD FOOD ITEMS</a></li>
+			</ul>
+		</nav>
 	</header>
 	<main>
 
@@ -15,7 +23,9 @@
 	</main>
 
 	<footer>
-		<%= erb :"/static/copyright" %>
+		<nav>
+			© 2015 Willy Cafe LLC
+		</nav>
 	</footer>
 </body>
 </html>

@@ -1,13 +1,11 @@
-/*@media print {
+$color1: #fff;
+$color2: #daa520;
+$color3: #EDFF3F;
+$color4: #FFB82E;
+$color5: #ff0000;
+$color6: #fcbb18;
+$color7: #f7edc7;
 
-}*/
-
-/** {
-  margin: 0;
-  border: 0;
-  padding: 0;
-}
-*/
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 @import url(http://fonts.googleapis.com/css?family=Fjalla+One);
@@ -20,23 +18,23 @@
 
 a {
 	text-decoration: none;
-	color: red;
+	color: $color5;
 }
 
 a:hover {
- 	color: #EDFF3F;
- 	background: #fff;
- 	color: goldenrod;
+ 	color: $color3;
+ 	background: $color1;
+ 	color: $color2;
  	padding: 1px 1px;
 }
 
 a.add {
-	color: #fff;
+	color: $color1;
 	font-size: 14px;
 	text-transform: uppercase;
 
 	border-radius: 4px;
-	border: 1px solid #fff;
+	border: 1px solid $color1;
  	display: inline-block;
   	
   	letter-spacing: .5px;
@@ -45,12 +43,12 @@ a.add {
 }
 
 a.add:hover {
-	background: #fff;
-	color: goldenrod;
+	background: $color1;
+	color: $color2;
 }
 
 .button {
-  	color: goldenrod;
+  	color: $color2;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14px;
 	text-transform: uppercase;
@@ -62,13 +60,13 @@ a.add:hover {
 	padding: 0 4px 0 4px;
 
  	border: 0;
- 	background: white;
+ 	background: $color1;
 }
 
 .button:hover {
   background: none;
-  color: white;
-  border: 1px solid #fff;
+  color: $color1;
+  border: 1px solid $color1;
 }
 
 ul {
@@ -82,15 +80,15 @@ body {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 16px;
 
-	background-color: #FFB82E;
-	color: #fff;
+	background-color: $color4;
+	color: $color1;
 
 	line-height: 1.3;
 
-	background: #daa520;
- 	background: -webkit-linear-gradient(to top, #fcbb18, #f7edc7);
- 	background: -moz-linear-gradient(to top, #f7edc7, #fefa8c);
- 	background: linear-gradient(to top, #fcbb18, #f7edc7);
+	background:  #$color2;
+ 	background: -webkit-linear-gradient(to top, $color6, $color7);
+ 	background: -moz-linear-gradient(to top, $color6, $color7);
+ 	background: linear-gradient(to top, $color6, $color7);
 }
 
 header {

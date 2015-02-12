@@ -1,8 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'activerecord', require: 'active_record'
+# Controller
 gem 'sinatra', github: 'sinatra/sinatra'
 gem 'sinatra-reloader'
-gem 'pg'
-gem 'pry'
+gem 'sinatra-contrib'
+gem 'sinatra-helpers'
 gem 'unicorn'
+
+# Model
+gem 'activerecord', require: 'active_record'
+gem 'pg'
+
+group :production do
+  gem 'pry'
+end
+
